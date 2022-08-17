@@ -3,20 +3,12 @@ import Content from "./Content";
 import Footer from "./Footer";
 import AddItem from "./AddItem";
 import SearchItem from "./SearchItem";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 function App() {
   const [items, setItems] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [fetchError, setFetchError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-
-  const filteredItems = useMemo(
-    () =>
-      items.filter((item) => {
-        return item.value.toLowerCase().includes(searchText.toLowerCase());
-      }),
-    [items, searchText]
-  );
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -47,7 +39,9 @@ function App() {
         {!isLoading && fetchError && (
           <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>
         )}
-        {!isLoading && !fetchError && <Content items={filteredItems} />}
+        {!isLoading && !fetchError && (
+          <Content items={items} setItems={setItems} searchText={searchText} />
+        )}
       </main>
       <Footer length={items.length} />
     </div>
