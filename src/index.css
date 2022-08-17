@@ -98,3 +98,27 @@ button:focus {
   background-color: limegreen;
   color: white;
 }
+
+.searchForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0.5rem 0.25rem;
+  margin: 0.25rem 0;
+}
+
+.searchForm label {
+  position: absolute;
+  left: -10000px;
+}
+
+.searchForm input[type="text"] {
+  flex-grow: 1;
+  max-width: 100%;
+  min-height: 48px;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  outline: none;
+}

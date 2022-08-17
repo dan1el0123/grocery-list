@@ -2,6 +2,7 @@ import Header from "./Header";
 import Content from "./Content";
 import Footer from "./Footer";
 import AddItem from "./AddItem";
+import SearchItem from "./SearchItem";
 import { useState, useEffect } from "react";
 function App() {
   const [items, setItems] = useState([]);
@@ -32,12 +33,21 @@ function App() {
     <div className="App">
       <Header title="Grocery List" />
       <AddItem items={items} setItems={setItems} />
+      <SearchItem searchText={searchText} setSearchtext={setSearchText} />
       <main>
         {isLoading && <p>Loading list...</p>}
         {!isLoading && fetchError && (
           <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>
         )}
-        {!isLoading && !fetchError && <Content items={items} />}
+        {!isLoading && !fetchError && (
+          <Content
+            items={items.filter((item) => {
+              return item.value
+                .toLowerCase()
+                .includes(searchText.toLowerCase());
+            })}
+          />
+        )}
       </main>
       <Footer length={items.length} />
     </div>
