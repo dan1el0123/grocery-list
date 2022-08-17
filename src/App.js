@@ -9,6 +9,25 @@ function App() {
   const [fetchError, setFetchError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchItems = async () => {
+      const API_URL = "http://localhost:3500/items";
+      try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw Error("Did not receive expected data");
+        const data = await response.json();
+        setItems(data);
+        setFetchError("");
+      } catch (err) {
+        setFetchError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchItems();
+  }, []);
+
   return (
     <div className="App">
       <Header title="Grocery List" />
@@ -19,7 +38,6 @@ function App() {
           <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>
         )}
         {!isLoading && !fetchError && <Content items={items} />}
-        <Content items={items} />
       </main>
       <Footer length={items.length} />
     </div>
