@@ -56,3 +56,45 @@ footer {
   background-color: mediumblue;
   color: aliceblue;
 }
+
+.addForm {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0.5rem 0.25rem;
+  margin: 0.5rem 0 0;
+  width: 100%;
+}
+
+.addForm label {
+  position: absolute;
+  left: -10000px;
+}
+
+.addForm input[type="text"] {
+  flex-grow: 1;
+  width: calc(100% - 50px);
+  min-height: 48px;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-right: 0.25rem;
+  outline: none;
+}
+
+button {
+  height: 48px;
+  min-width: 48px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: aliceblue;
+  color: mediumblue;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  background-color: limegreen;
+  color: white;
+}
