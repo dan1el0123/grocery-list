@@ -32,7 +32,11 @@ function App() {
   return (
     <div className="App">
       <Header title="Grocery List" />
-      <AddItem items={items} setItems={setItems} />
+      <AddItem
+        items={items}
+        setItems={setItems}
+        setFetchError={setFetchError}
+      />
       <SearchItem searchText={searchText} setSearchtext={setSearchText} />
       <main>
         {isLoading && <p>Loading list...</p>}
@@ -40,7 +44,12 @@ function App() {
           <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>
         )}
         {!isLoading && !fetchError && (
-          <Content items={items} setItems={setItems} searchText={searchText} />
+          <Content
+            items={items}
+            setItems={setItems}
+            searchText={searchText}
+            setFetchError={setFetchError}
+          />
         )}
       </main>
       <Footer length={items.length} />

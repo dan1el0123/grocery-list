@@ -7,18 +7,18 @@
     },
     {
       "id": 2,
-      "checked": true,
+      "checked": false,
       "value": "Pizza"
     },
     {
-      "id": 4,
-      "checked": false,
+      "id": 3,
+      "checked": true,
       "value": "Cookies"
     },
     {
       "id": 5,
-      "checked": false,
-      "value": "Candy"
+      "checked": true,
+      "value": "Milk"
     }
   ]
 }
